@@ -1,47 +1,103 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Zap, CheckCircle } from "lucide-react";
+// React and Next.js imports
+import Link from "next/link";
 
-const features = [
+// Third-party library imports
+import Balancer from "react-wrap-balancer";
+
+// UI component imports
+import { Section, Container } from "@/components/craft";
+
+// Icon imports
+import { Coins, ArrowRight } from "lucide-react";
+import { JSX } from "react";
+
+type FeatureText = {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+  href?: string;
+  cta?: string;
+};
+
+const featureText: FeatureText[] = [
   {
-    title: "LaTeX Integration",
-    description: "Seamlessly create mathematical equations with LaTeX support.",
-    icon: <FileText className="h-8 w-8 text-indigo-500" />,
+    icon: <Coins className="h-6 w-6" />,
+    title: "Lorem Ipsum",
+    href: "/",
+    description:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    cta: "Learn More",
   },
   {
-    title: "Smart Question Bank",
-    description: "Maintain and organize your question repository efficiently.",
-    icon: <Zap className="h-8 w-8 text-rose-500" />,
+    icon: <Coins className="h-6 w-6" />,
+    title: "Lorem Ipsum",
+    href: "/",
+    description:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    cta: "Learn More",
   },
   {
-    title: "Multiple Templates",
-    description: "Choose from pre-designed templates or create custom layouts.",
-    icon: <CheckCircle className="h-8 w-8 text-emerald-500" />,
+    icon: <Coins className="h-6 w-6" />,
+    title: "Lorem Ipsum",
+    href: "/",
+    description:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    cta: "Learn More",
+  },
+  {
+    icon: <Coins className="h-6 w-6" />,
+    title: "Lorem Ipsum",
+    href: "/",
+    description:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    cta: "Learn More",
   },
 ];
 
-const FeaturesSection = () => {
+const Feature = () => {
   return (
-    <section className="py-20 px-4 bg-slate-50" id="features">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">
-          Powerful Features
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="border border-slate-100 shadow-lg">
-              <CardHeader>
-                <div className="mb-4">{feature.icon}</div>
-                <CardTitle className="text-slate-900">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-slate-600">{feature.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+    <Section className="border-b max-h-max">
+      <Container className="not-prose">
+        <div className="flex flex-col gap-6">
+          <h2 className="text-5xl text-center !my-0">Features</h2>
+{/* 
+          <h3 className="text-4xl">
+            <Balancer>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            </Balancer>
+          </h3> */}
+          <h4 className="text-2xl font-light text-center opacity-70">
+            <Balancer>
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+            </Balancer>
+          </h4>
+
+          <div className="mt-6 grid gap-6 md:mt-12 md:grid-cols-4">
+            {featureText.map(
+              ({ icon, title, description, href, cta }, index) => (
+                <Link
+                  href={`${href}`}
+                  className="flex flex-col justify-between gap-6 rounded-lg border p-6 transition-all hover:-mt-2 hover:mb-2"
+                  key={index}
+                >
+                  <div className="grid gap-4">
+                    {icon}
+                    <h4 className="text-xl text-primary">{title}</h4>
+                    <p className="text-base opacity-75">{description}</p>
+                  </div>
+                  {cta && (
+                    <div className="flex h-fit items-center text-sm font-semibold">
+                      <p>{cta}</p> <ArrowRight className="ml-2 h-4 w-4" />
+                    </div>
+                  )}
+                </Link>
+              )
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 
-export default FeaturesSection;
+export default Feature;

@@ -1,118 +1,106 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import Balancer from "react-wrap-balancer";
+import { Article, Container, Section } from "../craft";
+import { ReactNode } from "react";
+import { Button } from "../ui/button";
+import { CircleCheck } from "lucide-react";
+import { Badge } from "../ui/badge";
+import Link from "next/link";
 
-const PricingSection = () => {
-  const pricingPlans = [
-    {
-      name: "Starter",
-      price: "$49",
-      duration: "/month",
-      description: "Perfect for small institutions",
-      features: [
-        "Up to 100 questions/month",
-        "5 templates",
-        "Basic LaTeX support",
-        "Email support",
-        "1 admin user",
-      ],
-    },
-    {
-      name: "Professional",
-      price: "$99",
-      duration: "/month",
-      description: "Ideal for growing institutions",
-      features: [
-        "Unlimited questions",
-        "20 templates",
-        "Advanced LaTeX support",
-        "Priority support",
-        "5 admin users",
-        "Custom branding",
-      ],
-      popular: true,
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      duration: "",
-      description: "For large institutions",
-      features: [
-        "Unlimited everything",
-        "Custom templates",
-        "Full LaTeX support",
-        "24/7 support",
-        "Unlimited users",
-        "API access",
-        "Custom integration",
-      ],
-    },
-  ];
+interface PricingCardProps {
+  title: "Basic" | "Standard" | "Pro";
+  price: string;
+  description?: string;
+  features: string[];
+  cta: string;
+  href: string;
+}
+
+// Dummy pricing data
+const pricingData: PricingCardProps[] = [
+  {
+    title: "Basic",
+    price: "$29/month",
+    description: "Perfect for small businesses and individuals.",
+    features: ["3 Pages", "Basic SEO", "Email Support", "Responsive Design"],
+    cta: "Choose Basic",
+    href: "https://stripe.com/",
+  },
+  {
+    title: "Standard",
+    price: "$59/month",
+    description: "Best for growing businesses with more needs.",
+    features: [
+      "10 Pages",
+      "Advanced SEO",
+      "CMS Integration",
+      "24/7 Chat Support",
+    ],
+    cta: "Choose Standard",
+    href: "https://stripe.com/",
+  },
+  {
+    title: "Pro",
+    price: "$99/month",
+    description: "Ideal for larger businesses that need scalability.",
+    features: [
+      "Unlimited Pages",
+      "E-commerce Integration",
+      "Priority Support",
+      "Custom API Integration",
+    ],
+    cta: "Choose Pro",
+    href: "https://stripe.com/",
+  },
+];
+
+const Pricing = () => {
   return (
-    <div>
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">
-            Pricing Plans
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, index) => (
-              <Card
-                key={index}
-                className={`border border-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 ${
-                  plan.popular ? "ring-2 ring-indigo-500" : ""
-                }`}
-              >
-                <CardHeader>
-                  <CardTitle className="text-slate-900">{plan.name}</CardTitle>
-                  <CardDescription className="text-slate-600">
-                    {plan.description}
-                  </CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-slate-900">
-                      {plan.price}
-                    </span>
-                    <span className="text-slate-600">{plan.duration}</span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="flex items-center gap-2 text-slate-700"
-                      >
-                        <Check className="h-4 w-4 text-emerald-500" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    className={`w-full ${
-                      plan.popular
-                        ? "bg-gradient-to-r from-indigo-600 to-rose-600 hover:from-indigo-700 hover:to-rose-700 text-white"
-                        : "bg-slate-100 hover:bg-slate-200 text-slate-900"
-                    } transition-all duration-300`}
-                  >
-                    Get Started
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+    <Section>
+      <Container className="flex flex-col items-center gap-4 text-center">
+        <h2 className="text-5xl !my-0">Pricing</h2>
+        <p className="text-lg opacity-70 md:text-2xl">
+          <Balancer>Select the plan that best suits your needs.</Balancer>
+        </p>
+
+        <div className="not-prose mt-4 grid grid-cols-1 gap-6 min-[850px]:grid-cols-3">
+          {pricingData.map((plan, index) => (
+            <PricingCard plan={plan} key={index} />
+          ))}
         </div>
-      </section>
+      </Container>
+    </Section>
+  );
+};
+
+const PricingCard = ({ plan }: { plan: PricingCardProps }) => {
+  return (
+    <div className="flex flex-col rounded-lg border p-6">
+      <div className="text-center">
+        <Badge>{plan.title}</Badge>
+        <h4 className="mb-2 mt-4 text-2xl text-primary">{plan.price}</h4>
+        <p className="text-sm opacity-70">{plan.description}</p>
+      </div>
+
+      <div className="my-4 border-t"></div>
+
+      <ul className="space-y-3 text-left">
+        {plan.features.map((feature, i) => (
+          <li key={i} className="flex items-center text-sm opacity-70">
+            <CircleCheck className="mr-2 h-4 w-4" />
+            {feature}
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-auto pt-6">
+        <Link href={plan.href} target="_blank">
+          <Button size={"sm"} className="w-full">
+            {plan.cta}
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };
 
-export default PricingSection;
+export default Pricing;

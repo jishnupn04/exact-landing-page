@@ -1,35 +1,56 @@
-import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
-import { TextEffect } from "@/components/ui/text-effect";
+// React and Next.js imports
+import Link from "next/link";
+import Image from "next/image";
 
-const HeroSection = () => {
+// Third-party library imports
+import Balancer from "react-wrap-balancer";
+import { Camera } from "lucide-react";
+
+// Local component imports
+import { Section, Container } from "@/components/craft";
+import { Button } from "@/components/ui/button";
+
+
+// Asset imports
+import Logo from "@/public/next.svg";
+import Screenshot from "@/public/exact.png";
+
+const Hero = () => {
   return (
-    <section className="py-20 px-4 text-left min-h-screen flex justify-start items-center bg-gradient-to-b from-indigo-50 to-white">
-      <div className="max-w-3xl mx-auto">
-        <TextEffect
-          per="char"
-          as="h3"
-          preset="slide"
-          className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl bg-clip-text"
-        >
-          Generate Perfect Question Papers in Minutes
-        </TextEffect>
-        <p className="mt-4 text-xl text-slate-600">
-          Streamline your exam preparation process with our intelligent
-          question paper generator.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-start gap-4">
-          <Button className="bg-gradient-to-r from-indigo-600 to-rose-600 text-white">
-            Request Demo
-            <ChevronRight className="ml-2 h-4 w-4" />
+    <Section className="relative overflow-hidden">
+      <Container className="py-0 flex flex-col min-h-lvh items-center justify-center text-center ">
+        <Image
+          src={Logo}
+          width={172}
+          height={72}
+          alt="Company Logo"
+          className="not-prose mb-6 dark:invert md:mb-8 self-center "
+        />
+        <h1 className="!mb-0">
+          <Balancer>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </Balancer>
+        </h1>
+        <h3 className="text-muted-foreground">
+          <Balancer>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.
+          </Balancer>
+        </h3>
+        <div className="not-prose mt-6 flex gap-2 md:mt-12">
+          <Button asChild>
+            <Link href="/">
+              <Camera className="mr-2" />
+              Lorem Ipsum
+            </Link>
           </Button>
-          <Button variant="outline" className="border-slate-200">
-            View Features
+          <Button variant={"ghost"} asChild>
+            <Link href="/posts">Dolor Sit Amet -{">"}</Link>
           </Button>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 
-export default HeroSection;
+export default Hero;
