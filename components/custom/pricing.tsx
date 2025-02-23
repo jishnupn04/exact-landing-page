@@ -1,6 +1,5 @@
 import Balancer from "react-wrap-balancer";
-import { Article, Container, Section } from "../craft";
-import { ReactNode } from "react";
+import { Container, Section } from "../craft";
 import { Button } from "../ui/button";
 import { CircleCheck } from "lucide-react";
 import { Badge } from "../ui/badge";

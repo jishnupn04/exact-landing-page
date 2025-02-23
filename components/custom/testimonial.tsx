@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
 
 const testimonial = () => {
   const testimonials = [
@@ -46,7 +47,7 @@ const testimonial = () => {
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <img
+                    <Image
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="w-12 h-12 rounded-full ring-2 ring-indigo-100"
