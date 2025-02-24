@@ -81,7 +81,7 @@ export function NavBar() {
         <NavigationMenu >
           <NavigationMenuList className="max-[825px]:hidden ">
             <Link href="/" className="pl-2">
-              <h1 className="font-bold">fabrika.</h1>
+              <h1 className="font-bold">exact.</h1>
             </Link>
           </NavigationMenuList>
         </NavigationMenu>
