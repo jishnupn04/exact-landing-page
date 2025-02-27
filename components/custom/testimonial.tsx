@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 
-const testimonial = () => {
+const Testimonial = () => {
   const testimonials = [
     {
       name: "Dr. Sarah Williams",
@@ -74,4 +74,4 @@ const testimonial = () => {
   );
 };
 
-export default testimonial;
+export default Testimonial;

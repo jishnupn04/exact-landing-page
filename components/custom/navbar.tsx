@@ -26,17 +26,17 @@ export function NavBar() {
       <div className="flex justify-between md:w-[990px] w-[95%] border dark:border-zinc-900 dark:bg-[#3B1C32]  relative   backdrop-blur bg-opacity-50 z-9 bg-gray-100 border-white border-opacity-20 rounded-xl p-2  overflow-visible">
         <Dialog>
           <SheetTrigger className="min-[825px]:hidden p-2 transition">
-            <MenuIcon />            
+            <MenuIcon />
           </SheetTrigger>
           <div className="min-[825px]:hidden flex  justify-end w-full">
-            <ModeToggle/>
+            <ModeToggle />
           </div>
           <SheetContent side="left">
             <SheetHeader>
-              <SheetTitle>fabrika.</SheetTitle>
+              <SheetTitle>exact.</SheetTitle>
               <SheetDescription>
-                Scale and launch products with expert developers, on-demand, at
-                a flat monthly fee
+                Streamline your exam preparation process with our intelligent
+                question paper generator.
               </SheetDescription>
             </SheetHeader>
             <div className="flex flex-col space-y-3 mt-[1rem] z-[99]">
@@ -78,7 +78,7 @@ export function NavBar() {
             </div>
           </SheetContent>
         </Dialog>
-        <NavigationMenu >
+        <NavigationMenu>
           <NavigationMenuList className="max-[825px]:hidden ">
             <Link href="/" className="pl-2">
               <h1 className="font-bold">exact.</h1>

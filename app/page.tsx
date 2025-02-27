@@ -9,18 +9,19 @@ import { NavBar } from "@/components/custom/navbar";
 import FAQ from "@/components/custom/faq";
 import CTA from "@/components/custom/cta";
 import Footer from "@/components/custom/footer";
+import Testimonial from "@/components/custom/testimonial";
+import { ImageComparisonComponent } from "@/components/custom/spring-img-comparison";
 
 const LandingPage = () => {
-
   return (
     <div className="min-h-screen ">
-      <NavBar/>
+      <NavBar />
       <Hero />
       <FeaturesSection />
+      <ImageComparisonComponent />
+      <FAQ />
       <PricingSection />
-      <FAQ/>
-      {/* Testimonials Section */}
-      
+      {/* <Testimonial /> */}
       <CTA />
       <Footer />
     </div>
